@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmi Elementari în C++</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; display: flex; }
+        #menu { width: 200px; position: fixed; left: 0; top: 0; height: 100%; background: #f4f4f4; padding: 20px; }
+        #menu a { display: block; margin-bottom: 10px; text-decoration: none; color: blue; }
+        #content { margin-left: 220px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+        button { margin-top: 10px; padding: 5px 10px; background: blue; color: white; border: none; cursor: pointer; }
+    </style>
+    <script>
+        function runCode(codeId, outputId) {
+            let code = document.getElementById(codeId).textContent;
+            let output = document.getElementById(outputId);
+            const worker = new Worker(URL.createObjectURL(new Blob([
+                `onmessage = function(e) {
+                    let result = eval(e.data);
+                    postMessage(result);
+                }`
+            ], { type: 'application/javascript' })));
+            worker.onmessage = function(e) {
+                output.textContent = e.data;
+            };
+            worker.postMessage(code);
+        }
+    </script>
+</head>
+<body>
+    <div id="menu">
+        <h3>Meniu</h3>
+        <a href="index.html">Acasă</a>
+        <a href="sortare.html">Sortare</a>
+        <a href="cautare.html">Căutare</a>
+        <a href="numere_prime.html">Numere Prime</a>
+        <a href="minim_maxim.html">Minim și Maxim</a>
+        <a href="divizori.html">Divizori</a>
+        <a href="invers.html">Invers</a>
+        <a href="palindrom.html">Palindrom</a>
+        <a href="permutari.html">Permutări</a>
+        <a href="despre.html">Despre Proiect</a>
+    </div>
+    <div id="content">
+        <h1>Algoritmi Elementari în C++</h1>
+        <p>Bine ai venit! Acest site prezintă algoritmi elementari în C++, cu explicații și exemple.</p>
+        <img src="algorithm.jpg" alt="Imagine despre algoritmi" width="400">
+
+        
+        <h2>Explicația proiectului</h2>
+        <p><strong>Pașii realizați pentru acest proiect:</strong></p>
+        <ol>
+            <li>Am creat structura HTML a paginii web.</li>
+            <li>Am adăugat un meniu fix în partea stângă pentru navigare ușoară.</li>
+            <li>Am implementat stilizarea cu CSS pentru o interfață clară.</li>
+            <li>Am adăugat secțiuni pentru fiecare algoritm important.</li>
+            <li>Am scris algoritmii folosind JavaScript pentru a putea fi rulați direct în browser.</li>
+            <li>Am adăugat butoane pentru rularea fiecărui algoritm și afișarea rezultatelor.</li>
+        </ol>
+        
+        <p><strong>Explicație:</strong></p>
+        <p>Acest proiect este conceput pentru a ajuta utilizatorii să înțeleagă și să ruleze algoritmi elementari în C++. Deși codul este inițial scris în C++, el a fost transpus în JavaScript pentru a putea fi executat direct în browser. Fiecare algoritm este prezentat cu explicații, iar utilizatorii pot interacționa cu el prin intermediul butoanelor de rulare.</p>
+    </div>
+</body>
+</html>
